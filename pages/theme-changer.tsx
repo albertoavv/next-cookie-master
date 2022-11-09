@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 import { Layout } from '../components/layouts';
+import BasicModal from './BasicModal';
 
 
 interface Props {
@@ -66,6 +67,7 @@ const ThemeChangerPage: FC<Props> = ({ theme }) => {
                     >
                         Solicitud
                     </Button>
+                    <BasicModal />
                 </CardContent>
             </Card>
         </Layout>

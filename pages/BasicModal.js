@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ChangeEvent, FC, useEffect, useState }  from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
@@ -22,8 +22,9 @@ const onClickServer = async() => {
 
   console.log({ data });
 }
+
 export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
@@ -36,12 +37,12 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <p id="modal-modal-title" variant="h6" component="h2">
           {"¿Aceptas nuestras Cookies?"}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          </p>
+          <p id="modal-modal-description" sx={{ mt: 2 }}>
           <p>Usamos cookies para mejorar tu experiencia en la web.</p>
-          </Typography>
+          </p>
 
           <Button onClick={handleClose}>No</Button>
           <Button onClick={onClickServer} autoFocus>
