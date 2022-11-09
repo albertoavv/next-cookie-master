@@ -1,12 +1,13 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next'
-import { Button, Card, CardContent, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Button, Card, CardContent, Dialog, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
 
 import { Layout } from '../components/layouts';
+import AlertDialog from './AlertDialog';
 
 
 interface Props {
@@ -66,6 +67,7 @@ const ThemeChangerPage: FC<Props> = ({ theme }) => {
                     >
                         Solicitud
                     </Button>
+                    <AlertDialog />
                 </CardContent>
             </Card>
         </Layout>
