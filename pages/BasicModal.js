@@ -1,9 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
-
+import Cookies from 'js-cookie';
+import axios from 'axios';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -16,11 +17,15 @@ const style = {
   p: 4,
 };
 
+const onClickServer = async() => {
+  const { data } = await axios.get('/api/hello');
+
+  console.log({ data });
+}
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   return (
     <div>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -32,11 +37,16 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          {"¿Aceptas nuestras Cookies?"}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          <p>Usamos cookies para mejorar tu experiencia en la web.</p>
           </Typography>
+
+          <Button onClick={handleClose}>No</Button>
+          <Button onClick={onClickServer} autoFocus>
+            Si
+          </Button>
         </Box>
       </Modal>
     </div>
